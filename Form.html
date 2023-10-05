@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Feedback</title>
+    <style>
+      label {
+        float: left;
+        width: 150px;
+      }
+
+      #container {
+        width: 700px;
+        margin: auto;
+        background-color: beige;
+      }
+
+      main {
+        padding: 50px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 2px solid #000; /* Add solid border to the entire table */
+      }
+
+      th,
+      td {
+        border: 1px solid #000; /* Add solid border to table cells */
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2; /* Background color for table headers */
+      }
+
+      #options {
+        margin-left: 150px;
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div id="container">
+        <main>
+          <h2>Feedback</h2>
+          <h3>Love something? Hate something? Let us know!</h3>
+          Note: Fields marked with an asterisk(*) are mandatory
+          <br /><br />
+          <form method="post" onsubmit="validateForm(event)">
+            <label>Title*:</label>
+            <input
+              type="radio"
+              name="title"
+              id="miss"
+              value="Ms."
+              required="required"
+            />Miss
+            <input
+              type="radio"
+              name="title"
+              id="mr"
+              value="Mr."
+              required="required"
+            />Mr.
+            <input
+              type="radio"
+              name="title"
+              id="mrs"
+              value="Mrs."
+              required="required"
+            />Mrs. <br /><br />
+
+            <label for="firstName">First Name*:</label>
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              placeholder="First Name"
+              oninput="validateFirstName()"
+              required="required"
+            />
+            <br /><br />
+
+            <label for="lastName">Last Name*:</label>
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              placeholder="Last Name"
+              oninput="validateLastName()"
+              required="required"
+            />
+            <br /><br />
+
+            <label for="emailId">Email Id*:</label>
+            <input
+              type="text"
+              name="emailId"
+              id="emailId"
+              placeholder="yourname@domain.com"
+              oninput="validateEmail()"
+              required="required"
+            />
+            <br /><br />
+
+            <label for="phoneNumber">Phone Number*:</label>
+            <input
+              type="text"
+              name="phoneNumber"
+              id="phoneNumber"
+              placeholder="xxx-xxx-xxxx"
+              oninput="validatePhoneNumber()"
+              required="required"
+            />
+            <br /><br />
+
+            <label for="zipcode">ZipCode*:</label>
+            <input
+              type="text"
+              name="zipcode"
+              id="zipcode"
+              placeholder="xxxxxx"
+              oninput="validateZipCode()"
+              required="required"
+            />
+            <br /><br />
+
+            <label for="address1">Address 1*:</label>
+            <input
+              type="text"
+              name="address1"
+              id="address1"
+              oninput="validateAddress1()"
+              required="required"
+            />
+            <br /><br />
+
+            <label for="address2">Address 2:</label>
+            <input
+              type="text"
+              name="address2"
+              id="address2"
+              oninput="validateAddress2()"
+            />
+            <br /><br />
+
+            <label for="city">City*:</label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              oninput="validateCity()"
+              required="required"
+            />
+            <br /><br />
+
+            <label for="state">State*:</label>
+            <input
+              type="text"
+              name="state"
+              id="state"
+              oninput="validateState()"
+              required="required"
+            />
+            <br /><br />
+
+            <label for="sandwitchCategory">SandwitchCategory*:</label>
+            <select
+              name="sandwitchCategory"
+              id="sandwitchCategory"
+              onchange="showCheckboxes()"
+              required="required"
+            >
+              <option value="" disabled selected>Select</option>
+              <option value="option1">BLT</option>
+              <option value="option2">Turkey Club</option>
+              <option value="option3">Reuben</option>
+              <option value="option4">Caprese</option>
+              <option value="option5">Grilled Cheese</option>
+            </select>
+            <br /><br />
+
+            <div id="options" style="display: none">
+              <div>
+                <input
+                  type="checkbox"
+                  id="checkbox1"
+                  name="optioncheckbox"
+                  class="sandwich-checkbox"
+                  onchange="toggleTextbox('textbox1', this.checked)"
+                /><span>Small</span><span class="my-span"></span>
+
+                <div id="textbox1" style="display: none">
+                  <input
+                    type="text"
+                    placeholder="Add comments"
+                    name="optiontext"
+                    class="sandwich-textbox"
+                  />
+                  <br /><br />
+                </div>
+              </div>
+
+              <div>
+                <input
+                  type="checkbox"
+                  id="checkbox2"
+                  name="optioncheckbox"
+                  class="sandwich-checkbox"
+                  onchange="toggleTextbox('textbox2', this.checked)"
+                /><span>Medium</span><span class="my-span"></span>
+
+                <div id="textbox2" style="display: none">
+                  <input
+                    type="text"
+                    placeholder="Add comments"
+                    name="optiontext"
+                    class="sandwich-textbox"
+                  />
+                  <br /><br />
+                </div>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="checkbox3"
+                  class="sandwich-checkbox"
+                  name="optioncheckbox"
+                  onchange="toggleTextbox('textbox3', this.checked)"
+                /><span>Large</span><span class="my-span"></span>
+                <div id="textbox3" style="display: none">
+                  <input
+                    type="text"
+                    placeholder="Add comments"
+                    name="optiontext"
+                    class="sandwich-textbox"
+                  />
+                  <br /><br />
+                </div>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="checkbox4"
+                  class="sandwich-checkbox"
+                  name="optioncheckbox"
+                  onchange="toggleTextbox('textbox4', this.checked)"
+                /><span>Extra large</span><span class="my-span"></span>
+                <div id="textbox4" style="display: none">
+                  <input
+                    type="text"
+                    placeholder="Add comments"
+                    name="optiontext"
+                    class="sandwich-textbox"
+                  />
+                  <br /><br />
+                </div>
+              </div>
+            </div>
+
+            <label>How did you hear*:</label>
+            <input type="checkbox" name="source" value="facebook" /> Facebook
+            <input type="checkbox" name="source" value="google" /> Google
+            <input type="checkbox" name="source" value="yelp" /> Yelp
+            <br /><br />
+
+            <label for="comments">Comments*:</label>
+            <textarea
+              name="text"
+              id="comments"
+              placeholder="Your comments"
+              rows="5"
+              cols="25"
+              oninput="validateComments()"
+              required="required"
+            ></textarea>
+            <br /><br />
+            <input type="submit" disabled="true" id="submitBtn" />
+            <input type="Reset" onclick="resetForm()" />
+            <br /><br />
+          </form>
+        </main>
+      </div>
+
+      <br /><br />
+      <br /><br />
+      <br /><br />
+      <table id="summaryTable" style="display: none">
+        <!-- Table headers -->
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Adress1</th>
+          <th>Address2</th>
+          <th>City</th>
+          <th>State</th>
+          <th>ZipCode</th>
+          <th>Comments</th>
+          <th>Burger</th>
+          <th>Burger Size</th>
+          <th>Burger Comments</th>
+          <th>Source</th>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      let checkForm = false;
+      let checkFirstName = false;
+      let checkLastName = false;
+      let checkEmail = false;
+      let checkPhoneNumber = false;
+      let checkZipCode = false;
+      let checkComments = false;
+      let checkAddress1 = false;
+      let checkAddress2 = true;
+      let checkCity = false;
+      let checkState = false;
+
+      function validateFirstName() {
+        var firstName = document.getElementById("firstName").value;
+        var firstNameField = document.getElementById("firstName");
+        var lettersRegex = /^[a-zA-Z\s]+$/;
+        if (
+          !firstName ||
+          firstName.trim() === "" ||
+          !lettersRegex.test(firstName) ||
+          firstName.length < 3 ||
+          firstName.length > 50
+        ) {
+          firstNameField.style.color = "red";
+          checkFirstName = false;
+        } else {
+          firstNameField.style.color = "black";
+          checkFirstName = true;
+        }
+        enableSubmitButton();
+      }
+
+      function validateLastName() {
+        var lastName = document.getElementById("lastName").value;
+        var lastNameField = document.getElementById("lastName");
+        var lettersRegex = /^[a-zA-Z\s]+$/;
+
+        if (
+          !lastName ||
+          lastName.trim() === "" ||
+          lastName.length < 3 ||
+          lastName.length > 50 ||
+          !lettersRegex.test(lastName)
+        ) {
+          lastNameField.style.color = "red";
+          checkLastName = false;
+        } else {
+          lastNameField.style.color = "black";
+          checkLastName = true;
+        }
+        enableSubmitButton();
+      }
+
+      function validateEmail() {
+        var email = document.getElementById("emailId").value;
+        var emailField = document.getElementById("emailId");
+        var emailRegex = /^[a-zA-Z0-9._-]+@northeastern\.edu$/; // Restrict to northeastern.edu domain
+
+        // Check for minimum and maximum length
+        if (
+          !email ||
+          email.trim() === "" ||
+          email.length < 5 ||
+          email.length > 50 ||
+          !emailRegex.test(email)
+        ) {
+          emailField.style.color = "red";
+          checkEmail = false;
+        } else {
+          emailField.style.color = "black";
+          checkEmail = true;
+        }
+        enableSubmitButton();
+      }
+
+      function validatePhoneNumber() {
+        var phoneNumber = document.getElementById("phoneNumber").value;
+        var phoneNumberField = document.getElementById("phoneNumber");
+        var phoneRegex = /^\d{10}$/;
+
+        // Check for null, empty space, and phone number format
+        if (
+          !phoneNumber ||
+          phoneNumber.trim() === "" ||
+          !phoneRegex.test(phoneNumber)
+        ) {
+          phoneNumberField.style.color = "red";
+          checkPhoneNumber = false;
+        } else {
+          phoneNumberField.style.color = "black";
+          checkPhoneNumber = true;
+        }
+        enableSubmitButton();
+      }
+
+      function validateZipCode() {
+        var zipcode = document.getElementById("zipcode").value;
+        var zipcodeField = document.getElementById("zipcode");
+        var zipRegex = /^\d{5}$/;
+
+        // Check for null, empty space, and zip code format
+        if (!zipcode || zipcode.trim() === "" || !zipRegex.test(zipcode)) {
+          zipcodeField.style.color = "red";
+          checkZipCode = false;
+        } else {
+          zipcodeField.style.color = "black";
+          checkZipCode = true;
+        }
+        enableSubmitButton();
+      }
+
+      function validateComments() {
+        var comments = document.getElementById("comments").value;
+        var commentsField = document.getElementById("comments");
+        var alphanumericRegex = /^[a-zA-Z0-9\s]+$/; // Regular expression for alphanumeric characters
+
+        // Check for null or empty space, minimum and maximum length, and alphanumeric characters
+        if (
+          !comments ||
+          comments.trim() === "" ||
+          comments.length < 5 ||
+          comments.length > 500 ||
+          !alphanumericRegex.test(comments)
+        ) {
+          commentsField.style.color = "red";
+          checkComments = false;
+        } else {
+          commentsField.style.color = "black";
+          checkComments = true;
+        }
+        enableSubmitButton();
+      }
+
+      function toggleTextbox(textbox, isChecked) {
+        var textboxElement = document.getElementById(textbox);
+        if (isChecked) {
+          textboxElement.style.display = "block";
+          textboxElement.querySelector("input").required = true;
+        } else {
+          textboxElement.style.display = "none";
+          textboxElement.querySelector("input").required = false;
+        }
+        enableSubmitButton();
+      }
+
+      function enableSubmitButton() {
+        var submitButton = document.getElementById("submitBtn");
+        if (
+          checkFirstName &&
+          checkLastName &&
+          checkEmail &&
+          checkPhoneNumber &&
+          checkZipCode &&
+          checkComments
+        ) {
+          submitButton.disabled = false;
+        } else {
+          submitButton.disabled = true;
+        }
+      }
+
+      function validateForm(event) {
+        event.preventDefault();
+        console.log("INSIDEVALLLL");
+
+        if (
+          checkFirstName &&
+          checkLastName &&
+          checkEmail &&
+          checkPhoneNumber &&
+          checkZipCode &&
+          checkComments &&
+          checkAddress1 &&
+          //   checkAddress2 &&
+          checkCity &&
+          checkState
+        ) {
+          // Form is valid, proceed to display the summary table
+          console.log("Calling function");
+          displaySummaryTable();
+        } else {
+          console.log("Not valid");
+          // Form is not valid
+          // Prevent form submission
+        }
+      }
+
+      function showCheckboxes() {
+        // Clear values from text input fields
+        let text1 = document.getElementById("textbox1");
+        let text2 = document.getElementById("textbox2");
+        let text3 = document.getElementById("textbox3");
+        let text4 = document.getElementById("textbox4");
+
+        text1.value = "";
+        text2.value = "";
+        text3.value = "";
+        text4.value = "";
+
+        text1.style.display = "none";
+        text2.style.display = "none";
+        text3.style.display = "none";
+        text4.style.display = "none";
+
+        // Uncheck checkboxes
+        document.getElementById("checkbox1").checked = false;
+        document.getElementById("checkbox2").checked = false;
+        document.getElementById("checkbox3").checked = false;
+        document.getElementById("checkbox4").checked = false;
+
+        var sandwitchCategory = document.getElementById("sandwitchCategory");
+        var selectedValue = sandwitchCategory.value;
+        var selectedIndex = sandwitchCategory.selectedIndex;
+        var selectedText = sandwitchCategory.options[selectedIndex].textContent;
+        console.log(selectedIndex, selectedValue, "index");
+
+        // Hide all checkbox sets]
+        // Get all the <span> elements with the class "my-span"
+        var spanElements = document.querySelectorAll(".my-span");
+
+        // Modify the value of all the selected <span> elements
+        for (var i = 0; i < spanElements.length; i++) {
+          spanElements[i].textContent = ' '+selectedText;
+        }
+        let options = document.getElementById("options");
+        console.log(options, "OPPP");
+        options.style.display = "";
+      }
+
+      function displaySummaryTable() {
+        // Get form input values
+        console.log("INSIDE");
+        var title = document.querySelector('input[name="title"]:checked').value;
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var email = document.getElementById("emailId").value;
+        var phoneNumber = document.getElementById("phoneNumber").value;
+        var address1 = document.getElementById("address1").value;
+        var address2 = document.getElementById("address2").value
+          ? document.getElementById("address2").value
+          : "";
+        var city = document.getElementById("city").value;
+        var state = document.getElementById("state").value;
+        var zipcode = document.getElementById("zipcode").value;
+        var sandwitchCategory = document.getElementById("sandwitchCategory");
+        var selectedIndex = sandwitchCategory.selectedIndex;
+        var selectedText = sandwitchCategory.options[selectedIndex].textContent;
+
+        var burgersize = getSelectedCheckboxValues();
+        var source = getSelectedSourceValues();
+        var comments = document.getElementById("comments").value;
+        var burgercomments = getSelectedTextboxValues();
+
+        // Create a new table row
+        var table = document.getElementById("summaryTable");
+        var newRow = table.insertRow(-1);
+
+        // Insert data into the table cells
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+        var cell5 = newRow.insertCell(4);
+        var cell6 = newRow.insertCell(5);
+        var cell7 = newRow.insertCell(6);
+        var cell8 = newRow.insertCell(7);
+        var cell9 = newRow.insertCell(8);
+        var cell10 = newRow.insertCell(9);
+        var cell11 = newRow.insertCell(10);
+        var cell12 = newRow.insertCell(11);
+        var cell13 = newRow.insertCell(12);
+
+        cell1.innerHTML = title + firstName + lastName;
+        cell2.innerHTML = email;
+        cell3.innerHTML = phoneNumber;
+        cell4.innerHTML = address1;
+        cell5.innerHTML = address2;
+        cell6.innerHTML = city;
+        cell7.innerHTML = state;
+        cell8.innerHTML = zipcode;
+        cell9.innerHTML = comments;
+        cell10.innerHTML = selectedText;
+        cell11.innerHTML = burgersize.join(", ");
+        cell12.innerHTML = burgercomments.join(", ");
+        cell13.innerHTML = source.join(", ");
+
+        // cell8.innerHTML = sandwitchCategory;
+        // cell8.innerHTML = feedbackSize.join(", ");
+        // cell9.innerHTML = source.join(", ");
+        // cell10.innerHTML = comments;
+
+        // Display the table
+        console.log("Reached here!");
+
+        resetForm();
+        table.style.display = "table";
+      }
+
+      function getSelectedCheckboxValues() {
+        var checkboxes = document.querySelectorAll(
+          ".sandwich-checkbox:checked"
+        );
+        var values = Array.from(checkboxes).map(function (checkbox) {
+          // Get the adjacent <span> element's text
+          var span = checkbox.nextElementSibling;
+
+          return span.textContent.trim();
+        });
+        console.log(values, "CHECKBox");
+        return values;
+      }
+
+      function getSelectedTextboxValues() {
+        var textboxes = document.querySelectorAll(".sandwich-textbox:enabled");
+        var values = Array.from(textboxes)
+          .filter(function (textbox) {
+            return !!textbox.value;
+          })
+          .map(function (textbox) {
+            return textbox.value;
+          });
+        console.log(values, "TEXRKbox");
+        return values;
+      }
+
+      function getSelectedSourceValues() {
+        var checkboxes = document.querySelectorAll(
+          'input[name="source"]:checked'
+        );
+        var values = Array.from(checkboxes).map(function (checkbox) {
+          return checkbox.value;
+        });
+        return values;
+      }
+
+      function validateAddress1() {
+        var address1 = document.getElementById("address1").value;
+        var address1Field = document.getElementById("address1");
+        var alphanumericRegex = /^[a-zA-Z0-9]+$/; // Regular expression for alphanumeric characters
+
+        if (
+          address1.length < 5 ||
+          address1.length > 20 || // Change firstName to address1
+          !alphanumericRegex.test(address1)
+        ) {
+          address1Field.style.color = "red";
+          checkAddress1 = false;
+        } else {
+          address1Field.style.color = "black";
+          checkAddress1 = true;
+        }
+        enableSubmitButton();
+      }
+
+      function validateAddress2() {
+        var address2 = document.getElementById("address2").value;
+        var address2Field = document.getElementById("address2");
+        var alphanumericRegex = /^[a-zA-Z0-9]+$/; // Regular expression for alphanumeric characters
+
+        if (address2.length > 20 || !alphanumericRegex.test(address2)) {
+          address2Field.style.color = "red";
+          checkAddress2 = false;
+        } else {
+          address2Field.style.color = "black";
+          checkAddress2 = true;
+        }
+        enableSubmitButton();
+      }
+
+      function resetForm() {
+
+
+        var form = document.querySelector("form"); // Get the form element
+        form.reset(); // Reset the form to its default state, clearing all input fields
+        document.getElementById("options").style.display = "none";
+
+        checkForm = false;
+      checkFirstName = false;
+      checkLastName = false;
+      checkEmail = false;
+      checkPhoneNumber = false;
+      checkZipCode = false;
+      checkComments = false;
+      checkAddress1 = false;
+      checkAddress2 = true;
+      checkCity = false;
+      checkState = false;
+
+      enableSubmitButton()
+      }
+
+      // Validate City
+      function validateCity() {
+        var city = document.getElementById("city").value;
+        var cityField = document.getElementById("city");
+        var lettersRegex = /^[a-zA-Z\s]+$/; // Regular expression for letters and spaces
+
+        // Check for null, empty, and whitespace values, and ensure it contains only letters
+        if (
+          !city ||
+          city.trim() === "" ||
+          city.length < 3 ||
+          city.length > 50 ||
+          !lettersRegex.test(city)
+        ) {
+          cityField.style.color = "red";
+          checkCity = false;
+        } else {
+          cityField.style.color = "black";
+          checkCity = true;
+        }
+        enableSubmitButton();
+      }
+
+      // Validate State
+      function validateState() {
+        var state = document.getElementById("state").value;
+        var stateField = document.getElementById("state");
+        var lettersRegex = /^[a-zA-Z\s]+$/; // Regular expression for letters and spaces
+
+        // Check for null, empty, and whitespace values, and ensure it contains only letters
+        if (
+          !state ||
+          state.trim() === "" ||
+          state.length < 2 ||
+          state.length > 50 ||
+          !lettersRegex.test(state)
+        ) {
+          stateField.style.color = "red";
+          checkState = false;
+        } else {
+          stateField.style.color = "black";
+          checkState = true;
+        }
+        enableSubmitButton();
+      }
+    </script>
+  </body>
+</html>
